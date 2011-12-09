@@ -1,0 +1,9 @@
+{
+  "name"          : "perrytest",
+  "dependencies"  : 
+  	{"node-static":""}
+  ,
+  "main"          : "./server.js",
+  "version"       : "0.0.0",
+  "engines"       : { "node": ">= 0.4.1" }
+}
