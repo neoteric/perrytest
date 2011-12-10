@@ -5,35 +5,35 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
-			var scrollSpeed = 1; 		
-			var step = 8; 	// i cant get this number right	should be 8		
-			var current = 0;			
-			var imageWidth = 9144;	
-			var headerWidth = 94;		
-			var restartPosition =-(imageWidth - headerWidth);
-			function scrollBg(){
-				current -= step;		
-				if (current == restartPosition){
-					current = 0;
-				}
-				$('#magnify').css("background-position",current+"px 0");
-			}
-			var init = setInterval("scrollBg()", scrollSpeed);
-			//yeah, i know.  This should be done differently.
-			var scrollSpeed2 = 1; 		
-			var step2 = 1; 				
+						var scrollSpeed2 = 20; 		
+			var step2 = 1;
 			var current2 = 0;			
 			var imageWidth2 = 1965;	
 			var headerWidth2 = 700;		
-			var restartPosition2 =-(imageWidth2 - headerWidth2);
+			var restartPosition2 = -(imageWidth2 - headerWidth2);
 			function scrollSm(){
 				current2 -= step2;		
-				if (current2 == restartPosition2){
+				if (current2 <= restartPosition2){
 					current2 = 0;
 				}
 				$('#main').css("background-position",current2+"px 0");
 			}
-			var init2 = setInterval("scrollSm()", scrollSpeed2);
+			var init2 = setInterval(scrollSm, scrollSpeed2);
+            //  I know this is not the way to do it.
+			var scrollSpeed = 20; 		
+			var step = step2 * 7.1455696; 	// i cant get this number right	should be 8		
+			var current = 0;			
+			var imageWidth = 9144;	
+			var headerWidth = 94;		
+			var restartPosition = -(imageWidth - headerWidth);
+			function scrollBg(){
+				current -= step;		
+				if (current <= restartPosition){
+					current = 0;
+				}
+				$('#magnify').css("background-position",current+"px 0");
+			}
+			var init = setInterval(scrollBg, scrollSpeed);
 
 	</script>	
 		<style type="text/css" media="screen">
