@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Face Detection jQuery Plugin</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<script src="http://code.jquery.com/jquery-1.5.1.min.js"></script> 
+	<script src="js/facedetection/ccv.js"></script> 
+	<script src="js/facedetection/face.js"></script>
+	<script src="js/jquery.facedetection.js"></script> 
+	<script>
+	$(function() {
+		$('#try').click(function() {
+			var $this = $(this);
+			
+			var coords = $('img').faceDetection({
+				complete:function() {
+					$this.text('Done!');
+				},
+				error:function(img, code, message) {
+					$this.text('error!');
+					alert('Error: '+message);
+				}
+			});
+			for (var i = 0; i < coords.length; i++) {
+				$('<div>', {
+					'class':'face',
+					'css': {
+						'position':	'absolute',
+						'left':		coords[i].positionX +'px',
+						'top':		coords[i].positionY +'px',
+						'width': 	coords[i].width		+'px',
+						'height': 	coords[i].height	+'px'
+					}
+				})
+				.appendTo('#content');
+			}
+		});
+		return false;
+	});
+	</script>
+	<style>
+		.face {
+			border:2px solid #FFF;
+		}
+	</style>
+</head>
+
+<body>
+<div id="container">
+	<div id="content">
+		<a href="#" id="try">TRY IT NOW!</a>
+		<img src="esperson.jpg" id="myPicture"/>
+		</div>
+</div>
+</body>
+</html>
